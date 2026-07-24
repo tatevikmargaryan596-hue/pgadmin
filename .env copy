@@ -1,0 +1,9 @@
+MONGO_URI_DEV=mongodb+srv://lauraavagyan77_db_user:7FGBSCz3r0rNnM2E@cluster0.fk4xqkp.mongodb.net/
+PORT=3001
+JWT_ACCESS_SECRET=mysecretkey
+JWT_REFRESH_SECRET=myrefreshkey
+ACCESS_TOKEN_ACTIVE_TIME=15m
+REFRESH_TOKEN_ACTIVE_TIME=7d
+HOST_OF_SERVER=http://localhost:3001
+MAIL_USER=laura.avagyan77@gmail.com
+MAIL_PASS=kiuobvsndxvysedp

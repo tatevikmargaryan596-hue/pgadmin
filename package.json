@@ -1,0 +1,39 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "CITY",
+  "scripts": {
+    "start": "babel-node src/bin/www.js",
+    "dev": "babel-watch src/bin/www.js",
+    "migrate": "babel-node migrations/1_create_collection.js",
+    "migrate-down": "babel-node migrations/1_drop_collection.js",
+    "seed": "babel-node seeds/seed.js",
+    "reset": "npm run migrate-down && npm run migrate && npm run seed && npm run dev"
+  },
+  "author": "Engined AM",
+  "dependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@meanie/mongoose-to-json": "^2.6.0",
+    "babel": "^6.23.0",
+    "babel-watch": "^7.7.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.17.3",
+    "express-session": "^1.17.3",
+    "helmet": "^6.0.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^6.2.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.9.6",
+    "uuid": "^8.3.2",
+    "winston": "^3.6.0"
+  }
+}
