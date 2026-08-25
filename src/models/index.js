@@ -1,5 +1,5 @@
 // export { default as ProductStatusModel } from './ProductStatusModel.model';
-// export { default as UsersModel } from './users.model';
+export { default as UsersModel } from './users.model';
 // export { default as UsersStorageModel } from './users.storage.model';
 // export { default as StorageInfoModel } from './storage.info.model';
 // export { default as SlidesModel } from './slides.model';

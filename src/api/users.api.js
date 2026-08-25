@@ -10,16 +10,16 @@ import { UsersValidationMiddleware } from '../middlewares/validation';
 
 const router = express.Router();
 
-router.post('/insertValues',
-  // UsersValidation.validateAddArgs,
-  UsersController.insertValues);
+// router.post('/insertValues',
+//   // UsersValidation.validateAddArgs,
+//   UsersController.insertValues);
 
-router.get('/getValues/:id', UsersController.getValues);
+// router.get('/getValues/:id', UsersController.getValues);
 
 
-router.delete('/deleteValues/:id', UsersController.deleteValues);
+// router.delete('/deleteValues/:id', UsersController.deleteValues);
 
-router.put('/updateValues/:id', UsersController.updateValues);
+// router.put('/updateValues/:id', UsersController.updateValues);
 
 //router.post('/sendmail', UsersController.sendMail); // spasum enq Davitin
 
@@ -43,11 +43,11 @@ router.put('/updateValues/:id', UsersController.updateValues);
 // router.get('/:category/:companyName/:limit', UsersController.getCompanyDataWithLimit);
 
 //POST http://localhost:3001/api/v1/users/sendMail
-router.post(
-  '/sendMail',
-  UsersValidationMiddleware.validateMailArgs,
-  UsersController.sendMail
-); // completed
+// router.post(
+//   '/sendMail',
+//   UsersValidationMiddleware.validateMailArgs,
+//   UsersController.sendMail
+// ); // completed
 
 // // Storage Name
 // router.get('/storage/getStorageName',
@@ -69,5 +69,13 @@ router.post(
 
 // router.post('/storage/getPrice',
 //   UsersController.getPrice);
+
+router.post('/insert', UsersController.insert);
+router.get('/all', UsersController.getAll);
+router.get('/getById/:id', UsersController.getById);
+router.put('/updateById/:id', UsersController.updateById);
+router.delete('/deleteById/:id', UsersController.deleteById);
+
+
 
 export default router;

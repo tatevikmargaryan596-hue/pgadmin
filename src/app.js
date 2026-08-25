@@ -1,6 +1,7 @@
 
 
 // NPM Modules
+import '../knex.config.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
@@ -32,7 +33,7 @@ class App {
   /* @description Initialize the App.
    */
   async init() {
-    await App._initializeStorage(); // Այստեղ կկանչվի MongoDB-ի միացումը
+    //await App._initializeStorage(); // Այստեղ կկանչվի MongoDB-ի միացումը
     this._setRequestLogger();
     this._setCors();
     this._setRequestParser();
@@ -78,10 +79,10 @@ class App {
   }
 
 
-  static _initializeStorage() {
-    // Կանչում ենք MongoDB-ի նախապատրաստումը
-    return MongoStorage.init(); 
-  }
+  // static _initializeStorage() {
+  //   // Կանչում ենք MongoDB-ի նախապատրաստումը
+  //   return MongoStorage.init(); 
+  // }
 
   /* @private
    * @description Initialize API.
