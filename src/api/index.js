@@ -1,6 +1,6 @@
 import express from 'express';
 
-//import auth from './auth.api';
+import auth from './auth.api';
 import users from './users.api';
 // import slides from './slides.api';
 // import footer from './footer.api';
@@ -15,8 +15,8 @@ import users from './users.api';
 const app = express();
 
 // // API
-//app.use('/auth', auth);
-app.use('/users', users);
+app.use('/auth', auth);
+// app.use('/users', users);
 // app.use('/slides', slides);
 // app.use('/footers', footer);
 // app.use('/orders', orders);

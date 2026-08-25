@@ -1,7 +1,7 @@
-// NPM Modules
 import { Model } from 'objection';
-//mode class Users table -in not connection
+
 class UsersModel extends Model {
+
   static get idColumn() {
     return 'id';
   }
@@ -10,51 +10,44 @@ class UsersModel extends Model {
     return 'users';
   }
 
-  // static get jsonSchema() {
-  //   return {
-  //     type: 'object',
-  //     required: [],
-  //     properties: {
-  //       id: { type: 'integer' },
-  //       link: { type: 'string', minLength: 1, maxLength: 255 },
-  //       text: { type: 'string', minLength: 1, maxLength: 255 },
-  //       title: { type: 'string', minLength: 1, maxLength: 255 }
-  //     }
-  //  // };
-  // }
-
   $beforeInsert() {
-    const date = new Date();
-    this.created_at = date;
+    this.created_at = new Date();
   }
 
   $beforeUpdate() {
-    const date = new Date();
-    this.updated_at = date;
+    this.updated_at = new Date();
   }
 
-  // Contact Methods
- 
   static insert(payload) {
-    return UsersModel.query().insert(payload).returning('*');
+    return UsersModel
+      .query()
+      .insert(payload)
+      .returning('*');
   }
+
   static getAll() {
     return UsersModel.query();
   }
-   static getById(id) {
-    return UsersModel.query().findById(id);     
-      
+
+  static login(email) {
+    return UsersModel
+      .query()
+      .select('*')
+      .where({ email })
+      .first();
   }
-   static updateById(id, payload) {
-    return UsersModel.query().patchAndFetchById(id, payload);      
-      
+
+  static updateById(id, payload) {
+    return UsersModel
+      .query()
+      .patchAndFetchById(id, payload);
   }
-   static deleteById(id) {
-    return UsersModel.query().deleteById(id);      
-      
+
+  static deleteById(id) {
+    return UsersModel
+      .query()
+      .deleteById(id);
   }
 }
-
-
 
 export default UsersModel;

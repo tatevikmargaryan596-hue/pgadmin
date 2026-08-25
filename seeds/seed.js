@@ -1,48 +1,36 @@
 import knex from 'knex';
-import bcrypt from 'bcrypt';
-import { Model } from 'objection';
+import bcrypt from 'bcryptjs';
+import dbConfig from '../knex.config.js';
 
-async function seed(pg) { 
+const pg = knex(dbConfig);
 
-  await pg('users').insert([
-    {
+async function seed() {
+  try {
+    // Check if user already exists
+    const existing = await pg('users').where('email', 'john.doe@example.com').first();
+    
+    if (existing) {
+      console.log('User already exists, skipping seed');
+      process.exit(0);
+    }
+
+    const hashedPassword = bcrypt.hashSync('password123', 10);
+
+    await pg('users').insert({
       name: 'John Doe',
       email: 'john.doe@example.com',
-      password: await bcrypt.hash('password123', 10)
-    },
-    {
-      name: 'Jane Smith',
-      email: 'jane.smith@example.com',
-      password: await bcrypt.hash('janepassword', 10)
-    },
-    {
-      name: 'Alice Johnson',
-      email: 'alice.johnson@example.com',
-      password: await bcrypt.hash('alicepassword', 10)
-    }
-  ]);
-}
+      password: hashedPassword,
+      role: 'user'
+    });
 
-async function init() {
-  const pg = knex({
-    client: 'pg',
-    connection: {
-      host: 'localhost',
-      user: 'postgres',
-      password: 'admin123',
-      port: 5432,
-      database: 'postgres'
-    }
-  });
-  
-  try {
-    await seed(pg);
-    console.log('Database initialized successfully');
+    console.log('✅ User seeded successfully');
+    console.log('Email: john.doe@example.com');
+    console.log('Password: password123');
+    process.exit(0);
   } catch (err) {
-    console.error('Error initializing database:', err);
-  } finally {
-    await pg.destroy();
+    console.error('❌ Seed error:', err.message);
+    process.exit(1);
   }
 }
 
-init();
+seed();

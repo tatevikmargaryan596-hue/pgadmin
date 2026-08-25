@@ -7,8 +7,9 @@
     "dev": "babel-watch src/bin/www.js",
     "migrate": "babel-node migrations/1_create_table.js",
     "migrate-down": "babel-node migrations/1_drop_table.js",
+    "migrate-down-up": "npm run migrate-down & npm run migrate",
     "seed": "babel-node seeds/seed.js",
-    "reset": "npm run migrate-down && npm run migrate && npm run seed && npm run dev"
+    "reset": "npm run migrate-down & npm run migrate & npm run seed & npm run dev"
   },
   "author": "Engined AM",
   "dependencies": {

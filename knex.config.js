@@ -1,17 +1,13 @@
-import Knex from 'knex';
-import { Model } from 'objection';
 
-const db = Knex({
+const db = {
   client: 'pg',
   connection: {
     host: 'localhost',
     user: 'postgres',
-    password: 'admin123',
+    password: '17*$2007',
     port: 5432,
     database: 'postgres'
   }
-});
-
-Model.knex(db);
+}
 
 export default db;
